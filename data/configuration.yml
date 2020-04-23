@@ -28,10 +28,10 @@ questions:
       - {value: "Loads .env.local",      correct: true}
       - {value: "Loads .env.test.local if it exists",    correct: true}
   -
-    question: 'Expresion Language syntax is based on twig expression'
+    question: 'Expression Language syntax is based on twig expression'
     answers:
       - {value: "Yes", correct: true}
-      - {value: "No", correct: true}
+      - {value: "No", correct: false}
   -
     question: 'How to escape a backslash in Expression language'
     answers:
