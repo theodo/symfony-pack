@@ -80,12 +80,6 @@ questions:
             - {value: resources/views/Exception/error.twig,                         correct: false}
             - {value: templates/bundles/TwigBundle/Exception/error404.html.twig,        correct: true}
     -
-        question: 'In twig, what do you use if you want to optimize the size of the generated HTML content?'
-        answers:
-            - {value: spaceless,                        correct: false}
-            - {value: gzip,                             correct: true}
-            - {value: operators,                        correct: false}
-    -
         question: 'In Twig, which other Twig tag works as the old raw tag, for when you want to display code and not be parsed?'
         answers:
             - {value: spaceless,                           correct: false}
@@ -125,7 +119,7 @@ questions:
             - {value: 'needsEnvironment()', correct: false}
             - {value: 'needsContext()', correct: false}
             - {value: 'getSafe() and getPreEscape()', correct: false}
-            - {value: '1 and 3', correct: false}
+            - {value: 'needsLoader and needsContext', correct: false}
     -
         question: 'In Twig, a visitor priority varies between:'
         answers:
@@ -242,12 +236,58 @@ questions:
             - {value: "request",  correct: true}
             - {value: "locale",  correct: false}
     -
-        question: 'What is contained in the app global variable ?'
+        question: 'When you extend AbstractController, how do you create a response that renders a template?'
         answers:
-            - {value: "user",  correct: true}
-            - {value: "token",  correct: true}
-            - {value: "debug",  correct: true}
-            - {value: "flashes",  correct: true}
-            - {value: "session",  correct: true}
-            - {value: "request",  correct: true}
-            - {value: "locale",  correct: false}
+            - {value: "$this->render('toto.twig')",  correct: true}
+            - {value: "$this->renderTemplate('toto.twig')",  correct: false}
+            - {value: "$this->renderView('toto.twig')",  correct: false}
+    -
+        question: 'How to use twig in a service with autowiring'
+        answers:
+            - {value: "By typehinting a variable in constructor with Environment",  correct: true}
+            - {value: "By typehinting a variable in constructor with Twig",  correct: false}
+            - {value: "By typehinting a variable in constructor with Templating",  correct: false}
+            - {value: "By typehinting a variable in constructor with Rendering",  correct: false}
+    -
+        question: 'How to render static pages ?'
+        answers:
+            - {value: "Using Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController in routes.yaml",  correct: true}
+            - {value: "Using Symfony\\Component\\Twig\\Controller\\TemplateController in routes.yaml",  correct: false}
+            - {value: "Using Symfony\\Component\\Framework\\Controller\\TemplateController in routes.yaml",  correct: false}
+    -
+        question: 'Twig provides a function to check if a template exists ?'
+        answers:
+            - {value: "Yes : $twig->exists('toto.twig')",  correct: false}
+            - {value: "Yes : $twig->getLoader()->exists('toto.twig')",  correct: true}
+            - {value: "Yes : $twig->templateExists('toto.twig')",  correct: false}
+            - {value: "No",  correct: false}
+    -
+        question: 'How to dump information from twig template ?'
+        answers:
+            - {value: "{% dump articles %}",  correct: true}
+            - {value: "{{dump(article)}}",  correct: true}
+            - {value: "{{ debug(article)}}",  correct: false}
+            - {value: "{% debug articles %}",  correct: false}
+    -
+        question: 'How to control the variables accessible by a template included in another twig template'
+        answers:
+            - {value: "Not possible the children will have all the variables of the parent",  correct: false}
+            - {value: "by setting the with_context argument to false and passing variables manually",  correct: true}
+            - {value: "by setting the with_current_variables argument to false and passing variables manually",  correct: false}
+    -
+        question: 'How to render a template fragment from an existing controller ?'
+        answers:
+            - {value: "{{ render(path('latest_articles', {max: 3})) }}",  correct: true}
+            - {value: "{{ render(url('latest_articles', {max: 3})) }}",  correct: true}
+            - {value: "{{ render(controller('App\\Controller\\BlogController::recentArticles', {max: 3})) }}",  correct: true}
+        help: |
+            https://symfony.com/doc/5.0/templates.html#embedding-controllers
+    -
+        question: 'How to translate from twig template ?'
+        answers:
+            - {value: "{% trans %}Hello %name%{% endtrans %}",  correct: true}
+            - {value: "{% trans %}Hello %%name%%{% endtrans %}",  correct: false}
+            - {value: "{{ message|trans }}",  correct: true}
+            - {value: "{{ message|translate }}",  correct: false}
+        help: |
+            https://symfony.com/doc/5.0/translation/templates.html
