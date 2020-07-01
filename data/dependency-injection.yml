@@ -65,7 +65,7 @@ questions:
             - {value: "true", correct: true}
             - {value: "false", correct: false}
     -
-        question: 'Which of the following factory design pattern are available for service container defintion ?'
+        question: 'Which of the following factory design pattern are available for service container definition ?'
         help: https://symfony.com/doc/current/service_container/factories.html
         answers:
             - {value: 'Static factories', correct: true}
