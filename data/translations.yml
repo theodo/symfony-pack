@@ -1,0 +1,107 @@
+category: Translations
+questions:
+    -
+        question: 'What is the namespace of the TranslatorInterface used to translate basic messages in a service?'
+        help: https://symfony.com/doc/current/translation.html#basic-translation
+        answers:
+            - {value: 'Symfony\Contracts\Translation\TranslatorInterface', correct: true}
+            - {value: 'Symfony\Component\Translation\TranslatorInterface', correct: false}
+            - {value: 'Symfony\Component\Translation\Translator\TranslatorInterface', correct: false}
+            - {value: 'Symfony\Bundle\FrameworkBundle\Translation\TranslatorInterface', correct: false}
+    -
+        question: 'What is the Symfony recommendation about the translation keys format?'
+        help: https://symfony.com/doc/current/translation.html#using-real-or-keyword-messages
+        answers:
+            - {value: 'Use keys such as "symfony.is.great"', correct: false}
+            - {value: 'Use keys forming sentences such as "Symfony is great"', correct: false}
+            - {value: 'It depends on the use case', correct: true}
+    -
+        question: 'What are valid ways to translate in a Twig template?'
+        help: https://symfony.com/doc/current/translation/templates.html
+        answers:
+            - {value: '{% trans %}Hello %name%{% endtrans %}', correct: true}
+            - {value: '{% translate %}Hello %name%{% endtranslate %}', correct: false}
+            - {value: "{{ message|trans({'%name%': 'Fabien'}, 'app') }}", correct: true}
+            - {value: "{{ message|translate }}", correct: false}
+            - {value: "{% trans with {'%name%': 'Fabien'} from 'app' into 'fr' %}Hello %name%{% endtrans %}", correct: true}
+    -
+        question: 'Which of the following lines gives the output "Percent: 50%"?'
+        help: https://symfony.com/doc/current/translation/templates.html
+        answers:
+            - {value: "{% trans with {'%percent%': 50} %}Percent: %percent%%%{% endtrans %}", correct: true}
+            - {value: "{% trans with {'%percent%': 50} %}Percent: %percent%%{% endtrans %}", correct: false}
+            - {value: "{% trans with {'%percent%': 50} %}Percent: %percent%%%%{% endtrans %}", correct: false}
+            - {value: "{% trans with {'%percent%': 50} %}Percent: %percent%\\%{% endtrans %}", correct: false}
+            - {value: "{% trans with {'%percent%': 50} %}Percent: %percent%\\\\%{% endtrans %}", correct: false}
+    -
+        question: 'What is the signature of the trans() method?'
+        help: https://symfony.com/doc/current/translation.html#forcing-the-translator-locale
+        answers:
+            - {value: "public function trans(string $id, array $parameters = [], string $domain = null, string $locale = null);", correct: true}
+            - {value: "public function trans(string $id, array $parameters = [], string $locale = null, string $domain = null);", correct: false}
+            - {value: "public function trans(string $id, string $domain = null, array $parameters = [], string $locale = null);", correct: false}
+            - {value: "public function trans(string $id, string $locale = null, string $domain = null, array $parameters = []);", correct: false}
+    -
+        question: 'Which of these commands exist?'
+        help: |
+            https://symfony.com/doc/current/translation.html#extracting-translation-contents-and-updating-catalogs-automatically
+            https://symfony.com/doc/current/translation/lint.html
+        answers:
+            - {value: "bin/console debug:translation", correct: true}
+            - {value: "bin/console translation:update", correct: true}
+            - {value: "bin/console translation:lint", correct: false}
+            - {value: "bin/console translation:dump", correct: false}
+            - {value: "bin/console cache:clear --scope=translations", correct: false}
+    -
+        question: 'Which format a translation filename must follow to be used?'
+        help: https://symfony.com/doc/current/translation.html#translation-resource-file-names-and-locations
+        answers:
+            - {value: "domain.locale.loader", correct: true}
+            - {value: "domain.locale", correct: false}
+            - {value: "loader.locale", correct: false}
+            - {value: "locale.domain.loader", correct: false}
+    -
+        question: 'What are available loaders in Symfony?'
+        help: https://symfony.com/doc/current/translation.html#translation-resource-file-names-and-locations
+        answers:
+            - {value: ".yaml", correct: true}
+            - {value: ".xlf", correct: true}
+            - {value: ".php", correct: true}
+            - {value: ".json", correct: true}
+            - {value: ".ini", correct: true}
+            - {value: ".qt", correct: true}
+            - {value: ".dat", correct: true}
+            - {value: ".mo", correct: true}
+            - {value: ".po", correct: true}
+            - {value: ".txt", correct: false}
+            - {value: ".md", correct: false}
+    -
+        question: 'Can you have configure the translation component to use several paths for translation files?'
+        help: https://symfony.com/doc/current/translation.html#translation-resource-file-names-and-locations
+        answers:
+            - {value: "Yes", correct: true}
+            - {value: "No", correct: false}
+    -
+        question: 'How to use the ICU MessageFormat syntax in your translation files?'
+        help: https://symfony.com/doc/current/translation/message_format.html
+        answers:
+            - {value: "Suffix you translation files with '+intl-icu'", correct: true}
+            - {value: "Set the framework.translator.message_formatter parameter to use the message formatter provided by Symfony ", correct: false}
+            - {value: "Create a service implementing the MessageFormatterInterface that will handle the translation file parsing", correct: false}
+    -
+        question: 'How to set the locale for every request?'
+        help: |
+            https://symfony.com/doc/current/translation/locale.html
+            https://symfony.com/doc/current/routing.html#routing-locale-parameter
+        answers:
+            - {value: "Use the framework.default_locale parameter", correct: true}
+            - {value: "Create an EventListener on kernel.request calling $request->setLocale()", correct: true}
+            - {value: "Create an EventListener on kernel.controller calling $request->setLocale()", correct: false}
+            - {value: "Create an EventListener on kernel.response calling $request->setLocale()", correct: false}
+            - {value: "Define the locale as a route parameter importing routes using the '_locale' parameter", correct: true}
+    -
+        question: 'The command bin/console debug:translation lists all the missing translation keys and only them'
+        help: https://symfony.com/doc/current/translation/debug.html
+        answers:
+            - {value: "Yes", correct: false}
+            - {value: "No", correct: true}
