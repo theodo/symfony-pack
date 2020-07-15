@@ -202,3 +202,69 @@ questions:
             - {value: "an object", correct: false}
             - {value: "any non-null value", correct: false}
         help: https://github.com/symfony/symfony/blob/5.0/src/Symfony/Component/Security/Guard/AuthenticatorInterface.php
+    -
+        question: 'What role is given by default to a User ?'
+        answers:
+            - {value: "No role is given by default", correct: false}
+            - {value: "ROLE_USER", correct: true}
+            - {value: "USER", correct: false}
+            - {value: "USER_ROLE", correct: false}
+        help: https://symfony.com/doc/current/security.html#roles
+    -
+        question: 'Is it mandatory for a role to start by ROLE_'
+        answers:
+            - {value: "No", correct: false}
+            - {value: "yes", correct: true}
+        help: https://symfony.com/doc/current/security.html#roles
+    -
+        question: 'How can you deny access from a controller extending AbstractController ?'
+        answers:
+            - {value: "$this->denyAccessUnlessGranted('ROLE_ADMIN');", correct: true}
+            - {value: "$this->denyAccess();", correct: false}
+            - {value: "$this->authorizationChecker->denyAccessUnlessGranted('ROLE_ADMIN');", correct: true}
+            - {value: "$this->authorizationChecker->denyAccess();", correct: false}
+        help: https://symfony.com/doc/current/security.html#roles
+    -
+        question: 'How to check only if a user is logged in ?'
+        answers:
+            - {value: "$this->denyAccessUnlessGranted('ROLE_USER');", correct: true}
+            - {value: "$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');", correct: true}
+            - {value: "$this->denyAccessUnlessGranted('IS_AUTHENTICATED');", correct: false}
+        help: https://symfony.com/doc/current/security.html#checking-to-see-if-a-user-is-logged-in-is-authenticated-fully
+    -
+        question: 'How to check only if a user is using the remember me feature ?'
+        answers:
+            - {value: "IS_REMEMBERED", correct: true}
+            - {value: "IS_AUTHENTICATED_REMEMBERED", correct: false}
+        help: https://symfony.com/doc/current/security.html#checking-to-see-if-a-user-is-logged-in-is-authenticated-fully
+    -
+        question: 'Which special attributes exist ?'
+        answers:
+            - {value: "IS_AUTHENTICATED_FULLY", correct: true}
+            - {value: "IS_AUTHENTICATED_REMEMBERED", correct: true}
+            - {value: "IS_AUTHENTICATED_ANONYMOUSLY", correct: true}
+            - {value: "IS_ANONYMOUS", correct: true}
+            - {value: "IS_REMEMBERED", correct: true}
+            - {value: "IS_IMPERSONATOR", correct: true}
+        help: https://symfony.com/doc/current/security.html#checking-to-see-if-a-user-is-logged-in-is-authenticated-fully
+    -
+        question: 'What is the correct way to enable logout in your application'
+        answers:
+            - {value: "Define a path in the logout config param and a route ", correct: true}
+            - {value: "Define a path in the logout config param", correct: false}
+            - {value: "Define a path in the logout config param and a controller", correct: false}
+            - {value: "Create a Logout controller and use $security->logout() in it", correct: false}
+        help: https://symfony.com/doc/current/security.html#logging-out
+    -
+        question: 'To add custom action during logout : '
+        answers:
+            - {value: "You implement yourself the logout controller", correct: false}
+            - {value: "Listen to the LogoutEvent", correct: true}
+        help: https://symfony.com/doc/current/security.html#logging-out
+    -
+        question: 'Can you use multiple guard authenticators ?'
+        answers:
+            - {value: "Yes, with one shared entry point", correct: true}
+            - {value: "Yes with separate entry points and separate firewalls", correct: true}
+            - {value: "Yes with separate entry points and one firewall", correct: false}
+        help: https://symfony.com/doc/current/security/multiple_guard_authenticators.html
