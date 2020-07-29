@@ -1,0 +1,124 @@
+category: Profiler
+questions:
+    -
+        question: 'Using flex, which package contains the profiler?'
+        answers:
+            - {value: sensio/framework-extra-bundle, correct: false}
+            - {value: symfony/debug,                 correct: false}
+            - {value: symfony/debug-pack,            correct: true}
+            - {value: symfony/profiler-pack,         correct: true}
+        help: https://symfony.com/doc/5.0/profiler.html#installation
+    -
+        question: 'What method can you use to access the profile of a request programmatically?'
+        answers:
+            - {value: $profiler->loadProfileFromResponse($response);, correct: true}
+            - {value: $profiler->loadProfile($response);,             correct: false}
+            - {value: $profiler->getProfileFromResponse($response);,  correct: false}
+            - {value: $profiler->getProfile($response);,              correct: false}
+        help: https://symfony.com/doc/5.0/profiler.html#accessing-profiling-data-programmatically
+    -
+        question: 'In which response header does the profiler store the token associated with the profile?'
+        answers:
+            - {value: X-Debug-Token,         correct: true}
+            - {value: X-Profile-Token,       correct: false}
+            - {value: X-Profiler-Token,      correct: false}
+            - {value: X-Profile-Debug-Token, correct: false}
+        help: https://symfony.com/doc/5.0/profiler.html#accessing-profiling-data-programmatically
+    -
+        question: 'Using the associated token, how can you access a profile?'
+        answers:
+            - {value: $profiler->loadProfile($token);,          correct: true}
+            - {value: $profiler->loadProfileFromToken($token);, correct: false}
+            - {value: $profiler->getProfile($token);,           correct: false}
+            - {value: $profiler->getProfileFromToken($token);,  correct: false}
+        help: https://symfony.com/doc/5.0/profiler.html#accessing-profiling-data-programmatically
+    -
+        question: 'Which of the following are correct arguments of the Profiler find method?'
+        answers:
+            - {value: $ip,         correct: true}
+            - {value: $url,        correct: true}
+            - {value: $limit,      correct: true}
+            - {value: $method,     correct: true}
+            - {value: $start,      correct: true}
+            - {value: $end,        correct: true}
+            - {value: $statusCode, correct: true}
+            - {value: $token,      correct: false}
+            - {value: $timestamp,  correct: false}
+            - {value: $path,       correct: false}
+        help: https://symfony.com/doc/5.0/profiler.html#accessing-profiling-data-programmatically
+    -
+        question: 'Profiler can be enabled/disabled conditionally'
+        answers:
+            - {value: Using the enable/disable methods,     correct: true}
+            - {value: It can only be disabled conitionally, correct: false}
+            - {value: It can only be enabled conitionally,  correct: false}
+            - {value: No,                                   correct: false}
+            - {value: Using matchers,                       correct: false}
+        help: https://symfony.com/doc/5.0/profiler.html#enabling-the-profiler-conditionally
+    -
+        question: 'In order to inject the Profiler into a controller, you need to:'
+        answers:
+            - {value: 'Create an alias pointing to the existing profiler service', correct: true}
+            - {value: 'It is not possible',                                        correct: false}
+            - {value: 'Using Flex, you have nothing to do',                        correct: false}
+            - {value: 'Enable the Profiler Collector in configuration',            correct: false}
+        help: https://symfony.com/doc/5.0/profiler.html#enabling-the-profiler-conditionally
+    -
+        question: 'Which header can you use in order to refresh the debug toolbar?'
+        answers:
+            - {value: Symfony-Debug-Toolbar-Replace,    correct: true}
+            - {value: Symfony-Debug-Toolbar-Refresh,    correct: false}
+            - {value: Symfony-Profiler-Toolbar-Refresh, correct: false}
+            - {value: Refresh-Symfony-Profiler-Toolbar, correct: false}
+        help: https://symfony.com/doc/5.0/profiler.html#updating-the-web-debug-toolbar-after-ajax-requests
+    -   question: 'How can you enable the profiler during tests?'
+        answers:
+            - {value: 'By setting framework.profiler: { collect: true } in test config', correct: true}
+            - {value: 'By setting framework.profiler: { enabled: true } in test config', correct: false}
+            - {value: 'By calling $client->enableProfiler(); in your test',              correct: true}
+            - {value: 'By calling $client->collectProfilerData(); in your test',         correct: false}
+        help: https://symfony.com/doc/5.0/testing/profiling.html#testing-the-profiler-information
+    -   question: 'How can you create a custom data collector?'
+        answers:
+            - {value: 'By extending DataCollector',             correct: true}
+            - {value: 'By implementing DataCollectorInterface', correct: true}
+            - {value: 'By implementing ResetInterface',         correct: false}
+            - {value: 'By extending AbstractDataCollector',     correct: false}
+            - {value: 'By extending BaseDataCollector',         correct: false}
+        help: https://symfony.com/doc/5.0/profiler/data_collector.html#creating-a-custom-data-collector
+    -   question: 'The collect method of a DataCollector:'
+        answers:
+            - {value: 'is only called once',                                                 correct: true}
+            - {value: 'is called exactly twice',                                             correct: false}
+            - {value: 'is there to "pick up" the data that has been stored by your service', correct: true}
+            - {value: 'accepts a request argument',                                          correct: true}
+            - {value: 'accepts a response argument',                                         correct: true}
+            - {value: 'accepts an exception argument',                                       correct: true}
+        help: https://symfony.com/doc/5.0/profiler/data_collector.html#creating-a-custom-data-collector
+    -   question: 'In a data collector template, the section title (displayed in the toolbar) is:'
+        answers:
+            - {value: 'in the title block',  correct: false}
+            - {value: 'in the icon block',   correct: true}
+            - {value: 'in the text block',   correct: true}
+            - {value: 'in the header block', correct: true}
+        help: https://symfony.com/doc/5.0/profiler/data_collector.html#adding-web-profiler-templates
+    -   question: 'In a data collector template, the text block displays:'
+        answers:
+            - {value: 'the content of the section of the profiler panel',                     correct: false}
+            - {value: 'the content displayed when hovering the mouse over the toolbar panel', correct: true}
+            - {value: 'the section title',                                                    correct: false}
+            - {value: 'it does not exist',                                                    correct: false}
+        help: https://symfony.com/doc/5.0/profiler/data_collector.html#adding-web-profiler-templates
+    -   question: 'Which of the following are existing classes to style a custom data collector template.'
+        answers:
+            - {value: 'sf-toolbar-value',      correct: true}
+            - {value: 'sf-toolbar-info-piece', correct: true}
+            - {value: 'sf-toolbar-title',      correct: false}
+            - {value: 'sf-toolbar-block',      correct: true}
+        help: https://github.com/symfony/web-profiler-bundle/blob/5.0/Resources/views/Profiler/toolbar.css.twig
+    -   question: 'How do you show a panel in the profiler for a custom data collector?'
+        answers:
+            - {value: 'Add a @WebProfiler/Profiler/toolbar_item.html.twig with link set to true', correct: true}
+            - {value: 'Add a @WebProfiler/Profiler/toolbar_item.html.twig',                       correct: false}
+            - {value: 'It is always the case',                                                    correct: false}
+        help: https://symfony.com/doc/5.0/profiler/data_collector.html#adding-web-profiler-templates
